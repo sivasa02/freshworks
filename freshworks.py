@@ -51,7 +51,7 @@ def read(k):
         m = name[k]
         if m[1] != 0:
             if time.time() < m[1]:
-                return str(k) + "-" + str(m[0])
+                print ( k + "-" + str(m[0]))
             else:
                 print("ERROR: " + k + " Time expired")
         else:
@@ -101,7 +101,7 @@ def time_limit():
 
 
 def menu():
-    print("Enter ur choice:-1,2,3,4")
+    print("Enter your choice:-1,2,3,4")
     print(" 1.Create \n 2.Read \n 3.Delete \n 4.Quit")
     global i
     i = input()
@@ -113,17 +113,17 @@ def menu():
                 print("FILE IS EMPTY")
                 menu()
             else:
-                read(input())
+                read(input("Enter the key you want to read: "))
         elif int(i) == 3:
             if name == {}:
                 print("FILE IS EMPTY")
                 menu()
             else:
-                delete(input())
+                delete(input("Enter the key to be deleted: "))
         elif int(i) == 4:
             with open('file.json', 'w') as js:
                 json.dump(name, js)
-            exit()
+            quit()
         else:
             print("ERROR enter a valid input")
             menu()
